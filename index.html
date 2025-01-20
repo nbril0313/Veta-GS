@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Veta-GS:View-dependent deformable 3D Gaussian Splatting for thermal infrared Novel-view Synthesis">
+  <meta name="keywords" content="Gaussian Splatting, Thermal Infrared imaging, Computer Graphics">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veta-GS:View-dependent deformable 3D Gaussian Splatting for thermal infrared Novel-view Synthesis</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <link href="static/css/twentytwenty.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 24vh;
+      /* 화면 높이 전체를 채움 */
+      justify-content: center;
+      align-items: center;
+
+      /* 배경 설정 */
+      background:
+        radial-gradient(circle at center 20%, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 80%),
+        linear-gradient(to top, rgba(255, 255, 255, 1) 17%, rgba(255, 255, 255, 0) 20%),
+        url('asset/image.png');
+      /* 배경 이미지 경로 */
+      background-size: cover;
+      /* 화면에 맞게 이미지 크기 조정 */
+      background-repeat: no-repeat;
+      /* 이미지 반복 방지 */
+      background-position: center;
+      /* 이미지를 화면 가운데 배치 */
+      background-blend-mode: lighten;
+      /* 흰색과 이미지 조합 */
+    }
+
+    h1 {
+      color: black;
+      font-size: 3rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="section"></section>
+  <section class="hero" style="margin-top: -50px; border: none;">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-3 publication-title">Veta-GS:View-dependent deformable 3D Gaussian Splatting for thermal
+              infrared Novel-view Synthesis</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.google.com/">Anonymous</a></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://www.google.com/" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://www.google.com/" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="margin-top: -50px; border: none;">
+    <div class="container is-max-desktop">
+      <!-- TLDR. -->
+      <div class="content" style="display: flex;">
+        <h2 class="title is-5" style="margin-right: 10px; white-space: nowrap; letter-spacing: -2px; ">
+          <span style="color: red;">T</span>
+          <span style="color: blue;">L</span>
+          <span style="color: green;">D</span>
+          <span style="color: orange;">R</span>
+          <span style="color: black;">:</span>
+        </h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>We introduce Veta-GS, which leverages a view-dependent deformation field and a Thermal Feature Extractor
+              (TFE) to precisely capture subtle thermal variations and preserve robustness.</b>
+          </p>
+        </div>
+      </div>
+      <!--/ TLDR. -->
+    </div>
+  </section>
+  <section class="section" style="margin-bottom: -50px; border: none;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recently, 3D Gaussian Splatting (3DGS) based on Thermal
+              Infrared (TIR) imaging has gained attention in novel-view
+              synthesis, showing real-time rendering. However, novel-view
+              synthesis with thermal infrared images suffers from trans-
+              mission effects, emissivity, and low resolution, leading to
+              floaters and blur effects in rendered images. To address these
+              problems, we introduce Veta-GS, which leverages a view-
+              dependent deformation field and a Thermal Feature Extractor
+              (TFE) to precisely capture subtle thermal variations and pre-
+              serve robustness. Specifically, we design view-dependent
+              deformation field that leverages camera position and viewing
+              direction, which capture thermal variations. Furthermore, we
+              introduce the Thermal Feature Extractor (TFE) and MonoS-
+              SIM loss, which consider edge, frequency, and appearance to
+              preserve robustness. Extensive experiments on the TI-NSD
+              benchmark confirm the effectiveness of our method and the
+              impressive improvement in reconstruction quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="margin-bottom: -100px; border: none;">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h2 class="title is-3">Overview of Veta-GS pipeline.</h2>
+        <div class="columns is-four-fifths">
+          <img src="asset/pipeline.png" style="width: 100%; height: auto;  margin: 0 auto;" \>
+        </div>
+        <div class="content has-text-justified">
+          <p>Overview of Veta-GS pipeline. We utilize camera position x, viewing direction v, time t, and 3D Gaussian’s
+            position μ with positional encoding as input to deform 3D gaussians, by obtaining the offset (δμ, δr, δs).
+            Further we introduce Thermal Feature Extractor (TFE) and MonoSSIM loss which focus on edge, frequency, and
+            appearance to show robustness rendering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section"></section>
+  <div class="has-text-centered">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Overview of Veta-GS pipeline.</h2>
+      <div class="columns is-four-fifths">
+        <video id="video1" autoplay muted loop>
+          <source src="asset/videos/SaveImags.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+  </section>
+  <section class="section">
+    <div class="container hero-body">
+      <div class="column has-text-centered">
+        <h2 class="title is-3">Qualitative Visuals</h2>
+      </div>
+      <!--SpotlessSplats-->
+      <div class="columns is-centered is-gapless">
+        <div class="column is-one-third has-text-centered">
+          <div class="twentytwenty-container twentytwenty-custom">
+            <img src="asset/images/qualitative/Outdoor1/Outdoor_gt.png" alt="GT">
+            <img src="asset/images/qualitative/Outdoor1/Outdoor_3dgs.png" alt="3DGS">
+            <img src="asset/images/qualitative/Outdoor1/Outdoor_thermal3dgs.png" alt="Thermal3D-GS">
+            <img src="asset/images/qualitative/Outdoor1/Outdoor_VetaGS.png" alt="Veta-GS(Ours)">
+          </div>
+        </div>
+
+        <div class="column is-one-third has-text-centered">
+          <div class="twentytwenty-container twentytwenty-custom">
+            <img src="asset/images/qualitative/Outdoor2/Outdoor2_gt.png" alt="GT">
+            <img src="asset/images/qualitative/Outdoor2/Outdoor2_3dgs.png" alt="3DGS">
+            <img src="asset/images/qualitative/Outdoor2/Outdoor2_Thermla3DGS.png" alt="Thermal3D-GS">
+            <img src="asset/images/qualitative/Outdoor2/Outdoor2_VetaGS.png" alt="Veta-GS(Ours)">
+          </div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+          <div class="columns">
+            <!-- Concurrent Work. -->
+            <div class="columns">
+              <div class="column is-full-width">
+                <h2 class="title is-3">Related Links</h2>
+
+                <div class="content has-text-justified">
+                  <p>
+                    Check out some interesting works related to Thermal Infrared imaging:
+                  <ul>
+                    <li> <a href="https://arxiv.org/pdf/2403.10340">Thermal-NeRF: Neural Radiance Fields from an
+                        Infrared Camera.</a> </li>
+                    <li> <a href="https://arxiv.org/pdf/2407.15337">ThermalNeRF: Thermal Radiance
+                        Fields.</a> </li>
+                    <li> <a href="https://arxiv.org/pdf/2403.12154">ThermoNeRF: Joint RGB and Thermal Novel View
+                        Synthesis for
+                        Building Facades using Multimodal Neural Radiance Fields.</a> </li>
+                    <li> <a href="https://arxiv.org/pdf/2409.07200">ThermalGaussian: Thermal 3D Gaussian Splatting.</a>
+                    </li>
+                    <li> <a href="https://arxiv.org/pdf/2409.08042">Thermal3D-GS: Physics-induced 3D Gaussians
+                        for Thermal Infrared Novel-view Synthesis.</a> </li>
+                  </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="content has-text-centered">
+                <p>
+                  This website is licensed under a <a rel="license"
+                    href="http://creativecommons.org/licenses/by-sa/4.0/">CC
+                    BY-SA 4.0</a>
+                  and is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> website.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Bootstrap core JavaScript -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="static/css/bootstrap.min.js"></script>
+      <!-- <script src="/js/offcanvas.js"></script> -->
+      <script src="static/css/jquery.event.move.js"></script>
+      <script src="static/css/jquery.twentytwenty.js"></script>
+
+      <script>
+        $(window).load(function () { $(".twentytwenty-container").twentytwenty({ default_offset_pct: 0.5 }); });
+      </script>
+
+</body>
+
+</html>
